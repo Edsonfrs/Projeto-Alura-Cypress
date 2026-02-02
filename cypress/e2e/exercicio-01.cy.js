@@ -18,4 +18,10 @@ describe('Exercicios-01', () => {
     cy.contains('a', 'Fazer login').click();
 
   })
+
+  it('Deve visitar a página Home do AdoPet e e clicar no botão “Falar com o responsável"', () => {
+    cy.visit('https://adopet-frontend-cypress.vercel.app');
+    cy.contains('a', 'Fazer login').click();
+
+  })
 })
