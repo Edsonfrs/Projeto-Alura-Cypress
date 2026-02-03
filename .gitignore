@@ -1,1 +1,36 @@
+# Dependências (A "Esfera de Dyson" do JS)
 node_modules/
+jspm_packages/
+
+# Cypress - Artefatos de Execução (Geralmente não queremos versões locais no Git)
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Cypress - Arquivos de Ambiente e Segredos (CRÍTICO!)
+cypress.env.json
+.env
+.env.*
+
+# Logs e Relatórios de Teste (Mochawesome, etc)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+mochawesome-report/
+
+# Pasta de build e arquivos temporários
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Configurações de IDE (Evitar impor suas configs ao Kohai)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
