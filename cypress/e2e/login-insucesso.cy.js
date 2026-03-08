@@ -2,9 +2,21 @@ describe('Página de Login', () => {
     beforeEach(() => {
         cy.visit('https://adopet-frontend-cypress.vercel.app');
         cy.get('[data-test="login-button"]').click();
-    })
+        cy.intercept('POST', 'https://adopet-api-i8qu.onrender.com/adotante/login', {
+          statusCode:400, }).as('stubPost')
+        })
+    
 
   it('Deve preencher os campos do login corretamente e autenticar o usuário na página', () => {    
-    cy.loginInsucesso('dracul@borgopassnet.com','a123456')
+    cy.get('[data-test="submit-button"]').click();
+    cy.contains('É necessário informar um endereço de email').should('be.visible')
+    cy.contains('Insira sua senha').should('be.visible')
+    
+  })
+
+  it('Deve falhar mesmo que os campos sejam preenchidos corretamente', ()=>{
+    cy.login('dracul@borgopassnet.com','Senha123456')
+    cy.wait('@stubPost')
+    cy.contains('Falha no login. Consulte suas credenciais.').should('be.visible')
   })
 })
